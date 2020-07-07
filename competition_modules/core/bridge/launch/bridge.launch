@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+
+<launch>
+    <arg name="eth0" default="10.42.0.1" />
+    <arg name="wlan0" default="192.168.50.240" />
+
+    <node pkg="bridge" type="bridge.py" name="bridge_cmd_to_car" args="$(arg eth0)" output="screen">
+        <param name="bridge_type" value="Twist" />
+        <param name="bridge_from" value="/teleop/cmd_vel" />
+        <param name="bridge_to" value="/cmd_vel_mux/input/teleop" />
+    </node>
+
+    <node pkg="bridge" type="bridge.py" name="bridge_pan_to_car" args="$(arg eth0)" output="screen">
+        <param name="bridge_type" value="Float64" />
+        <param name="bridge_from" value="/teleop/pan" />
+        <param name="bridge_to" value="/pan/command" />
+    </node>
+
+    <node pkg="bridge" type="bridge.py" name="bridge_tilt_to_car" args="$(arg eth0)" output="screen">
+        <param name="bridge_type" value="Float64" />
+        <param name="bridge_from" value="/teleop/tilt" />
+        <param name="bridge_to" value="/tilt/command" />
+    </node>
+
+    <!-- <node pkg="bridge" type="bridge.py" name="bridge_tf_to_pc" args="$(arg wlan0)" output="screen">
+        <param name="bridge_type" value="TFMessage" />
+        <param name="bridge_from" value="/tf_static" />
+        <param name="bridge_to" value="/tf_static" />
+    </node> -->
+
+    <!-- <node pkg="bridge" type="bridge.py" name="bridge_img_to_pc" args="$(arg wlan0)" output="screen">
+        <param name="bridge_type" value="CompressedImage" />
+        <param name="bridge_from" value="/camera/color/image_raw/compressed" />
+        <param name="bridge_to" value="/teleop/image/compressed" />
+    </node> -->
+    
+
+</launch>

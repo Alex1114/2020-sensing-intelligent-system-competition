@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<launch>
+
+    <arg name="veh" default="locobot27"/>
+
+    <node pkg="astar" type="pub_map.py" name="pub_map" output="screen" />
+
+    <node pkg="astar" type="path_plan" name="plan" output="screen" />
+
+    <node pkg="astar" type="navigate.py" name="navigate" output="screen" >
+        <remap from="pose" to="robot_now_pose" />
+    </node>
+
+    <node pkg="control" type="pid_control.py" name="control" output="screen" >
+        <remap from="pose" to="robot_now_pose" />
+    </node>
+
+    <include file="$(find apriltags2_ros)/launch/apriltags_sis.launch">
+	    <arg name="veh" value="$(arg veh)"/>
+    </include>
+
+    <include file="$(find camera_rotation)/launch/camera_rotation.launch" />
+
+</launch>

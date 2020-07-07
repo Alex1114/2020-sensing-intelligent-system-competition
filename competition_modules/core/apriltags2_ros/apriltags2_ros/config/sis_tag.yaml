@@ -1,0 +1,40 @@
+
+
+standalone_tags:
+  [
+    { id: 0, size: 0.081, name: tag0 },
+    { id: 1, size: 0.081, name: tag1 },
+    { id: 2, size: 0.081, name: tag2 },
+    { id: 3, size: 0.081, name: tag3 },
+    { id: 4, size: 0.081, name: tag4 },
+    { id: 5, size: 0.081, name: tag5 },
+    { id: 6, size: 0.081, name: tag6 },
+    { id: 7, size: 0.081, name: tag7 },
+    { id: 8, size: 0.081, name: tag8 },
+    { id: 9, size: 0.081, name: tag9 },
+    { id: 10, size: 0.081, name: tag10},
+    { id: 11, size: 0.081, name: tag11},
+  ]
+
+
+# tag_bundles:
+#   [
+#     {
+#       name: "GATE1",
+#       layout:
+#         [
+#           { id: 4, size: 0.2286, x: -1.35, y: 0.6, z: -0.5 },
+#           { id: 5, size: 0.2286, x: -0.35, y: 2.75, z: -0.5 },
+#           { id: 6, size: 0.2286, x: 1.35, y: 1.1, z: -0.5 },
+#         ],
+#     },
+#     {
+#       name: "GATE2",
+#       layout:
+#         [
+#           { id: 24, size: 0.2286, x: -1.35, y: 0.6, z: -0.5 },
+#           { id: 25, size: 0.2286, x: -0.35, y: 2.75, z: -0.5 },
+#           { id: 26, size: 0.2286, x: 1.35, y: 1.1, z: -0.5 },
+#         ],
+#     },
+#   ]

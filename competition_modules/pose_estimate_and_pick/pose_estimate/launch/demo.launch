@@ -1,0 +1,7 @@
+<launch>
+
+  <node pkg="pose_estimate" type="find_pose" name="find_pose" output="screen"/>
+
+  <!-- rviz -->
+  <!--node pkg="rviz" type="rviz" name="rviz" args="-d $(find pcl_example)/config/rviz/delta.rviz"/-->
+</launch>

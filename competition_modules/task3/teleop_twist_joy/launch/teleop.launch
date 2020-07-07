@@ -1,0 +1,35 @@
+<launch>
+  
+  <arg name="joy_config" default="logitech" />
+  <arg name="joy_dev" default="/dev/input/js0" />
+  <arg name="config_filepath" default="$(find teleop_twist_joy)/config/$(arg joy_config).config.yaml" />
+  <arg name="eth0" default="10.42.0.1" />
+  <arg name="wlan0" default="192.168.50.250" />
+  <arg name="veh" default="locobot27"/>
+
+  <node pkg="joy" type="joy_node" name="joy_node">
+        <param name="dev" value="$(arg joy_dev)" />
+        <param name="deadzone" value="0.1" />
+        <param name="autorepeat_rate" value="20" />
+  </node>
+
+  <node pkg="teleop_twist_joy" name="teleop_twist_joy" type="teleop_node">
+    <rosparam command="load" file="$(arg config_filepath)" />
+  </node>
+
+  <node pkg="bridge" type="bridge.py" name="bridge_img_to_pc" args="$(arg wlan0)" output="screen">
+    <param name="bridge_type" value="CompressedImage" />
+    <param name="bridge_from" value="/camera/color/image_raw/compressed" />
+    <param name="bridge_to" value="/teleop/image/compressed" />
+  </node>
+
+  <node pkg="bridge" type="bridge.py" name="bridge_odom_to_pc" args="$(arg wlan0)" output="screen">
+    <param name="bridge_type" value="Odometry" />
+    <param name="bridge_from" value="/odom" />
+    <param name="bridge_to" value="/teleop/odom" />
+  </node>
+
+  <!-- <include file="$(find camera_rotation)/launch/camera_rotation.launch" /> -->
+
+
+</launch>

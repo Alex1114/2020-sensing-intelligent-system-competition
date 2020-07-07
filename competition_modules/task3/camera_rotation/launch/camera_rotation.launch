@@ -1,0 +1,19 @@
+<launch>
+  <!-- bridge -->
+  <include file="$(find bridge)/launch/bridge.launch" />
+
+  <!-- Apriltag -->
+  <!-- <include file="$(find apriltags2_ros)/launch/apriltags_sis.launch">
+	  <arg name="veh" value="locobot27"/>
+  </include>  -->
+
+  <!-- Calculate distance node -->
+  <!-- Assignment -->
+  
+  <node pkg="camera_rotation" type="get_transform.py" name="get_transform" output="screen" required="true" />
+  <node pkg="tf" type="static_transform_publisher" name="plate0_to_tag4" args="0 -0.6 0.1 1.5707963 1.5707963 0 tag4 plate_0 100" />
+  <node pkg="tf" type="static_transform_publisher" name="plate1_to_tag5" args="0 -0.6 0.1 1.5707963 1.5707963 0 tag5 plate_1 100" />
+  <node pkg="tf" type="static_transform_publisher" name="plate2_to_tag6" args="0 -0.6 0.1 1.5707963 1.5707963 0 tag6 plate_2 100" />
+  <node pkg="tf" type="static_transform_publisher" name="plate3_to_tag7" args="0 -0.6 0.1 1.5707963 1.5707963 0 tag7 plate_3 100" />
+
+</launch>

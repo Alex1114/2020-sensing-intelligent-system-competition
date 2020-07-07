@@ -1,0 +1,4 @@
+int64 plate
+---
+string result
+geometry_msgs/PoseStamped pose

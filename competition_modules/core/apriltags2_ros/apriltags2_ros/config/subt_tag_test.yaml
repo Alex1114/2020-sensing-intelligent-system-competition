@@ -1,0 +1,32 @@
+# standalone_tags:
+#   [
+#     { id: 4, size: 0.1575, name: tag4 },
+#     { id: 5, size: 0.1575, name: tag5 },
+#     { id: 6, size: 0.1575, name: tag6 },
+
+#     { id: 24, size: 0.1575, name: tag24 },
+#     { id: 25, size: 0.1575, name: tag25 },
+#     { id: 26, size: 0.1575, name: tag26 },
+#   ]
+
+tag_bundles:
+  [
+    {
+      name: "GATE1",
+      layout:
+        [
+          { id: 4, size: 0.1575, x: -1.35, y: 0.6, z: -0.5 },
+          { id: 5, size: 0.1575, x: -0.35, y: 2.75, z: -0.5 },
+          { id: 6, size: 0.1575, x: 1.35, y: 1.1, z: -0.5 },
+        ],
+    },
+    {
+      name: "GATE2",
+      layout:
+        [
+          { id: 24, size: 0.1575, x: -1.35, y: 0.6, z: -0.5 },
+          { id: 25, size: 0.1575, x: -0.35, y: 2.75, z: -0.5 },
+          { id: 26, size: 0.1575, x: 1.35, y: 1.1, z: -0.5 },
+        ],
+    },
+  ]

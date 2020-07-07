@@ -1,0 +1,36 @@
+<launch>
+  <arg name="launch_prefix" default="" /> <!-- set to value="gdbserver localhost:10000" for remote debugging -->
+  <arg name="node_namespace" default="apriltags2_ros_continuous_node" />
+  <arg name="camera_name" default="camera_middle/color" />
+  <arg name="camera_frame" default="camera_middle_color_optical_frame" />
+  <arg name="image_topic" default="image_raw" />
+  <arg name="target" default="1" /> <!-- GATE1 -->
+  <arg name="veh" default="" />
+
+
+  <group ns="$(arg veh)">
+    <!-- Set parameters -->
+    <rosparam command="load" file="$(find apriltags2_ros)/config/subt_setting.yaml" ns="$(arg node_namespace)" />
+    <rosparam command="load" file="$(find apriltags2_ros)/config/subt_tag.yaml" ns="$(arg node_namespace)" />
+
+    <node pkg="apriltags2_ros" type="apriltags2_ros_continuous_node" name="$(arg node_namespace)" clear_params="true" output="screen" launch-prefix="$(arg launch_prefix)">
+      <!-- Remap topics from those used in code to those on the ROS network -->
+      <remap from="image_rect" to="$(arg camera_name)/$(arg image_topic)" />
+      <remap from="camera_info" to="$(arg camera_name)/camera_info" />
+
+      <param name="camera_frame" type="str" value="$(arg camera_frame)" />
+      <param name="publish_tag_detections_image" type="bool" value="true" /> <!-- default: false -->
+    </node>
+
+    <node pkg="mapping" type="pub_global_pose.py" name="pub_global_pose" output="screen"/>
+
+    <node pkg="apriltags2_ros" type="apriltag_global_frame_eric.py" name="Apriltag_Global_Frame" output="screen">
+      <param name="target" value="$(arg target)" />
+    </node>
+
+
+
+  </group>
+
+
+</launch>

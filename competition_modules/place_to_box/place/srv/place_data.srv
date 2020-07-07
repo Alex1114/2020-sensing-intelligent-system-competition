@@ -1,0 +1,4 @@
+geometry_msgs/Pose pose
+int64 id
+---
+int64 obj_id

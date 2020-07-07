@@ -1,0 +1,9 @@
+<launch>
+
+  <!-- <node pkg="object_detection" type="task1_filtcolor.py" name="task1" output="screen"> -->
+  <node pkg="object_detection" type="task1.py" name="task1" output="screen">
+
+  </node>
+  <node pkg="pose_estimate" type="find_pose" name="find_pose" output="screen"/>
+  
+</launch>
