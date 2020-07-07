@@ -1,8 +1,7 @@
-# sis_competition_task_template
-
-## About this template
-
-You need to submit by using this template for each task.
+# sis_competition_task  
+  
+[Tutorial](https://drive.google.com/drive/folders/1twHdpltCn8hlASIWL9gCv0urSpLBvABC?usp=sharing)
+[Locobot NUC repo](https://github.com/Alex1114/2020-sensing-intelligent-system-competition-NUC)
 
 ## Files:
 
@@ -16,23 +15,48 @@ You need to submit by using this template for each task.
             
     - object_detection
 
-    - task3                
+    - task3(navigation)                
               
-- README.md             (You don't need to modify this file)
+- README.md            
 
-- Dockerfile            (You don't need to modify this file)
+- Dockerfile            
 
-- run_task.sh           (You don't need to modify this file)
+- docker_run.sh       
 
-- docker_run.sh         (You don't need to modify this file)
+- catkin_make.sh       
 
-- catkin_make.sh        (You don't need to modify this file)
-
-- environment.sh        (You don't need to modify this file)
-
-- task.launch    (You have to determine which node you need to launch in the task and write in this file)
+- environment.sh        
 
 - docker_build.sh       (If you want to build docker file, please execute/source this shell)
+
+## Run task1~task4  (Do it in TX2-docker)
+Tool
+```
+source docker_run.sh
+source docker_join.sh
+source catkin_make.sh
+source environment.sh
+```
+  
+- Terminal1
+```
+source start_tx2.sh
+```  
+  
+- Terminal2
+```
+roslaunch ojject_detection task1.launch
+```
+  
+- Terminal3
+```
+roslaunch astar navigation.launch
+```
+  
+- Terminal4
+```
+rosrun sis_task all.py
+```  
 
 ## How to use task3 pkg
 ```
@@ -72,13 +96,4 @@ tx2 $ source docker_run.sh [task name]
 ***After enter container, you need to run this command once.***
 ```
 tx2 docker $ source catkin_make.sh 
-```
-***Run task***
-```
-tx2 docker $ source run_task.sh
-```
-***If you want to enter same container, run this.***
-```
-tx2 $ source docker_run.sh same
-tx2 docker $ source environment.sh (remember!！)
 ```
